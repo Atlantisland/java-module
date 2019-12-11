@@ -1,6 +1,6 @@
-package academy.everyonecodes.java.week1.examples1;
+package academy.everyonecodes.java.week1.examples1.exercise4;
 
-  public class sumWithMethod {
+  public class SumWithMethod {
     public static int sum(int numberOne, int numberTwo) {
         return numberOne + numberTwo;
     }

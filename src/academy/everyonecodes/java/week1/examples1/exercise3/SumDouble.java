@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week1.examples1;
+package academy.everyonecodes.java.week1.examples1.exercise3;
 
 public class SumDouble {
     public static double sumDouble(double numberOne, double numberTwo) {

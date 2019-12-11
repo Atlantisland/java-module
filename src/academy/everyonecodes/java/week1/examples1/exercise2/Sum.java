@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week1.examples1;
+package academy.everyonecodes.java.week1.examples1.exercise2;
 
 public class Sum {
     public static void main(String[] args) {
