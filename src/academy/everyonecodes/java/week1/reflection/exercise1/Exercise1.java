@@ -13,7 +13,7 @@ public class Exercise1 {
 
 
     public static void main(String[] args) {
-        int result = raiseToPower(2, 5);
+        int result = raiseToPower(-1, 5);
         System.out.println("The result is " + result + ".");
     }
 
