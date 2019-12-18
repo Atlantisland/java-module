@@ -1,7 +1,5 @@
 package academy.everyonecodes.java.week2.set1.exercise3;
 
-import academy.everyonecodes.java.week2.examples.BookEntry;
-
 import java.util.List;
 
 public class Recipe {
