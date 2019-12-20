@@ -16,7 +16,7 @@ public class ShopAssistant {
         shoes.add(shoeFour);
 
         for (Shoe shoe : shoes) {
-            if (shoeCustomer.tryShoe(shoe)) {
+            if (!shoeCustomer.tryShoe(shoe)) {
                 System.out.println("Nope, this one doesn't fit, sorry!");
             } else {
                 System.out.println("I will take the " + shoe.getColor() + " one!");
