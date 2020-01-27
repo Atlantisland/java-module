@@ -12,3 +12,5 @@ public class StringCapitalizer {
     }
 
 }
+
+// text = text.trim().toLowerCase();

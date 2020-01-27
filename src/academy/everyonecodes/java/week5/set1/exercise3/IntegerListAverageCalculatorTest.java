@@ -42,5 +42,15 @@ class IntegerListAverageCalculatorTest {
 
     }
 
+    @Test
+    void calculateReturnsZeroForNumbersThatAddToZero() {
+        List<Integer> integers = List.of(-2, -1, 2, 1);
+
+        Optional<Double> oResult = calculator.calculate(integers);
+
+        Assertions.assertTrue(oResult.isPresent());
+        double expected = 0;
+        Assertions.assertEquals(expected, oResult.get());
+    }
 
 }

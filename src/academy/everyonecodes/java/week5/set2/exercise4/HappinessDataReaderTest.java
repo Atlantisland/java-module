@@ -7,17 +7,30 @@ import java.util.List;
 
 
 class HappinessDataReaderTest {
-    HappinessDataReader happinessDataReader = new HappinessDataReader();
+    HappinessDataReader reader = new HappinessDataReader();
 
     @Test
-    void readFirstLine() {
-        List<HappinessRecord> scores = happinessDataReader.read();
+    void readReturnsCorrectData() {
+        List<HappinessRecord> result = reader.read();
 
-        HappinessRecord result = scores.get(0);
-        HappinessRecord expected = new HappinessRecord("Lesotho", 139, 3.80800008773804);
-        Assertions.assertEquals(expected.getCountry(), result.getCountry());
-        Assertions.assertEquals(expected.getRank(), result.getRank());
-        Assertions.assertEquals(expected.getScore(), result.getScore());
+        int expectedSize = 155;
+        Assertions.assertEquals(expectedSize, result.size());
+
+
+        HappinessRecord expectedFirst = new HappinessRecord("Lesotho", 139, 3.80800008773804);
+        HappinessRecord resultFirst = result.get(0);
+        Assertions.assertEquals(expectedFirst, resultFirst);
+
+        HappinessRecord expectedLast = new HappinessRecord("Ireland", 15, 6.97700023651123);
+        HappinessRecord resultLast = result.get(result.size() - 1);
+        Assertions.assertEquals(expectedLast, resultLast);
+
+        /*private void assertRecordEquals(HappinessRecord expected, HappinessRecord actual) {
+            Assertions.assertEquals(expected.getCountry(), actual.getCountry());
+            Assertions.assertEquals(expected.getRank(), actual.getRank());
+            Assertions.assertEquals(expected.getScore(), actual.getScore());
+        }*/
+
+
     }
-
 }

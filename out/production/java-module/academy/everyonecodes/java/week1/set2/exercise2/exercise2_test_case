@@ -1,9 +1,0 @@
-Test Case
-
-combine
-["one", "three", "five"], ["two", "four"]         -> ["one", "two", "three", "four", "five"]
-["one", "three", "five"], ["two", "four", "six"]  -> ["one", "two", "three", "four", "five", "six"]
-[], []                                            -> []
-["one", "three", "five"], []                      -> ["one", "three", "five"]
-[], ["two", "four"]                               -> ["two", "four"]
-

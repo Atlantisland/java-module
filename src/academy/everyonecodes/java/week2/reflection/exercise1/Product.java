@@ -2,16 +2,16 @@ package academy.everyonecodes.java.week2.reflection.exercise1;
 
 public class Product {
 
-    private String productsName;
+    private String name;
     private double price;
 
-    public Product(String productsName, double price) {
-        this.productsName = productsName;
+    public Product(String name, double price) {
+        this.name = name;
         this.price = price;
     }
 
-    public String getProductsName() {
-        return productsName;
+    public String getName() {
+        return name;
     }
 
     public double getPrice() {

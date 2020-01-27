@@ -4,20 +4,12 @@ import java.util.Optional;
 
 public class LetterPositionFinder {
     public Optional<Integer> find(String word, String letter) {
-        int length = word.length();
-        int position = 0;
-        for (int i = 0; i < length; i++) {
-            if (!word.contains(letter)) {
-                return Optional.empty();
-            }
-
-
-
-
-
+        if (!word.contains(letter)) {
+            return Optional.empty();
         }
+        return Optional.of(word.indexOf(letter));
 
-    
+    }
 }
 
 // I am totally blocked (:D) therefore I write my strategy:

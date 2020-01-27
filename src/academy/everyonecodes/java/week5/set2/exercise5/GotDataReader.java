@@ -1,32 +1,28 @@
 package academy.everyonecodes.java.week5.set2.exercise5;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class GotDataReader {
-    private String contentRootPath = "src/academy/everyonecodes/java/week5/set2/files/got-characters.csv";
-    GotDataReader reader = new GotDataReader();
+    private String path = "src/academy/everyonecodes/java/week5/set2/files/got-characters.csv";
+    private GotDataReader reader = new GotDataReader();
+    private FileReader reader = new FileReader();
 
-    public List<Character> read(String contentRootPath) {
-        Path path = Path.of(contentRootPath);
-        List<Character> characterList = new ArrayList<>();
-        GotDataParser gotDataParser = new GotDataParser();
-
-        try {
-            List<String> lines = Files.readAllLines(path);
-            for (int i = 1; i < lines.size(); i++) {
-                Character currentCharacter = gotDataParser.parseLine(lines.get(i)).get();
-                characterList.add(currentCharacter);
+    public List<Character> read() {
+        List<String> lines = reader.read(path);
+        List<Character> characters = new ArrayList<>();
+        for (String line : lines) {
+            Optional<Character> oCharacter = parser.parseLine(line);
+            if (oCharacter.isPresent()) {
+                characters.add(oCharacter.get());
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return characterList;
-
+        return characters;
     }
 
 

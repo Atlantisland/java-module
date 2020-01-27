@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Cart {
     private List<CartItem> cartItems;
-    private String cartItemOwner;
+    private String owner;
 
-    public Cart(List<CartItem> cartItems, String cartItemOwner) {
+    public Cart(String owner, List<CartItem> cartItems) {
+        this.owner = owner;
         this.cartItems = cartItems;
-        this.cartItemOwner = cartItemOwner;
     }
 
     public List<CartItem> getCartItems() {
         return cartItems;
     }
 
-    public String getCartItemOwner() {
-        return cartItemOwner;
+    public String getOwner() {
+        return owner;
     }
 }

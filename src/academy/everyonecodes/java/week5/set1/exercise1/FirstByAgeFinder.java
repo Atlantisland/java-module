@@ -5,13 +5,10 @@ import java.util.Optional;
 
 public class FirstByAgeFinder {
 
-    public Optional<Person> find(List<Person> persons, int age) {
-        if (!persons.isEmpty()) {
-            for (Person person : persons) {
-                if (person.getAge() == age) {
-                    return Optional.of(person);
-                }
-
+    public Optional<Person> find(List<Person> people, int ageToFind) {
+        for (Person person : people) {
+            if (person.getAge() == ageToFind) {
+                return Optional.of(person);
             }
 
         }

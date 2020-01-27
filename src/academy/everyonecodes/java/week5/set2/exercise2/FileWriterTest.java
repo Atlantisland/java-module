@@ -61,8 +61,7 @@ class FileWriterTest {
         writer.write(pathInput, input);
         List<String> result = reader.read(pathInput);
 
-        List<String> expected = List.of("Line One", "Line Two", "Line Three");
-        Assertions.assertEquals(expected, result);
+        Assertions.assertEquals(input, result);
 
     }
 

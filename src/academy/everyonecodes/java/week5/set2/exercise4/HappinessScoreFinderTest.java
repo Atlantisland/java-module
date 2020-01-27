@@ -8,6 +8,42 @@ import java.util.Optional;
 
 
 class HappinessScoreFinderTest {
+
+    HappinessScoreFinder scoreFinder = new HappinessScoreFinder();
+
+    @Test
+    void findReturnsEmptyOptionalForEmptyList() {
+        List<HappinessRecord> records = List.of();
+
+        Optional<Double> oResult = scoreFinder.findFor(records, "Austria");
+
+        Assertions.assertTrue(oResult.isEmpty());
+    }
+
+    @Test
+    void findReturnsEmptyOptionalForCountryThatIsNotInList() {
+        HappinessRecord entry = new HappinessRecord("Germany", 4, 1.2);
+        List<HappinessRecord> records = List.of(entry);
+
+        Optional<Double> oResult = scoreFinder.findFor(records, "Austria");
+
+        Assertions.assertTrue(oResult.isEmpty());
+    }
+
+    @Test
+    void findReturnsScoreForCountryThatIsInList() {
+        HappinessRecord entry = new HappinessRecord("Austria", 4, 1.2);
+        List<HappinessRecord> records = List.of(entry);
+
+        Optional<Double> oResult = scoreFinder.findFor(records, "Austria");
+
+        Assertions.assertTrue(oResult.isPresent());
+        double expected = 1.2;
+        Assertions.assertEquals(expected, oResult.get());
+    }
+
+
+    /*
     HappinessScoreFinder happinessScoreFinder = new HappinessScoreFinder();
     HappinessRecord Lesotho = new HappinessRecord("Lesotho", 139, 3.80800008773804);
     HappinessRecord Guinea = new HappinessRecord("Guinea", 149, 3.50699996948242);
@@ -46,7 +82,7 @@ class HappinessScoreFinderTest {
         Optional<Double> oResult = happinessScoreFinder.findFor(input, "Germany");
         Assertions.assertTrue(oResult.isEmpty());
 
-    }
+    }*/
 
 }
 

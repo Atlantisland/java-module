@@ -13,7 +13,10 @@ class TipAdderTest {
     @CsvSource({
             "24.50, 23.14",
             "3.0, 2.45",
-            "27.0, 25.5"
+            "27.0, 25.5",
+            "105, 100",
+            "10.50, 10",
+            "100.00, 95.24"
     })
     void add(double expected, double input) {
         Double result = adder.add(input);

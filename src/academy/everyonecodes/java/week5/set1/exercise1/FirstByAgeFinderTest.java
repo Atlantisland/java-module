@@ -2,83 +2,49 @@ package academy.everyonecodes.java.week5.set1.exercise1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class FirstByAgeFinderTest {
     FirstByAgeFinder finder = new FirstByAgeFinder();
 
     @Test
-    void findWithDifferentAge() {
-        Person hansel = new Person("Hansel", 23);
-        List<Person> inputPersons = List.of(hansel);
-        int inputAge = 24;
+    void findReturnsEmptyOptionalForEmptyList() {
+        List<Person> people = List.of();
+        int ageToFind = 21;
 
-        Optional<Person> oPerson = finder.find(inputPersons, inputAge);
+        Optional<Person> result = finder.find(people, ageToFind);
 
-        Assertions.assertTrue(oPerson.isEmpty());
-
+        Assertions.assertTrue(result.isEmpty());
     }
 
     @Test
-    void findEmptyList() {
-        Person hansel = new Person("Hansel", 23);
-        List<Person> inputPersons = List.of();
-        int inputAge = 23;
+    void findReturnsEmptyOptionalForListWithoutAge() {
+        Person person1 = new Person("Mary", 28);
+        Person person2 = new Person("Steven", 24);
+        List<Person> people = List.of(person1, person2);
+        int ageToFind = 21;
 
-        Optional<Person> oPerson = finder.find(inputPersons, inputAge);
+        Optional<Person> oResult = finder.find(people, ageToFind);
 
-        Assertions.assertTrue(oPerson.isEmpty());
-
+        Assertions.assertTrue(oResult.isEmpty());
     }
 
     @Test
-    void findWithFirstElement() {
-        Person hansel = new Person("Hansel", 23);
-        Person mugatu = new Person("Mugatu", 25);
-        List<Person> inputPersons = List.of(hansel, mugatu);
-        int inputAge = 23;
+    void findReturnsCorrectPersonForListWithAge() {
+        Person person1 = new Person("Mary", 28);
+        Person person2 = new Person("Steven", 24);
+        List<Person> people = List.of(person1, person2);
+        int ageToFind = 28;
 
-        Optional<Person> oPerson = finder.find(inputPersons, inputAge);
+        Optional<Person> oResult = finder.find(people, ageToFind);
 
-        Assertions.assertTrue(oPerson.isPresent());
-        Assertions.assertEquals("Hansel", oPerson.get().getName());
-
+        Assertions.assertTrue(oResult.isPresent());
+        Person oResultPerson = oResult.get();
+        String oExpectedName = "Mary";
+        int oExpectedAge = 28;
+        Assertions.assertEquals(oExpectedName, oResultPerson.getName());
+        Assertions.assertEquals(oExpectedAge, oResultPerson.getAge());
     }
-
-    @Test
-    void findWithSecondElement() {
-        Person hansel = new Person("Hansel", 25);
-        Person mugatu = new Person("Mugatu", 23);
-        List<Person> inputPersons = List.of(hansel, mugatu);
-        int inputAge = 23;
-
-        Optional<Person> oPerson = finder.find(inputPersons, inputAge);
-
-        Assertions.assertTrue(oPerson.isPresent());
-        Assertions.assertEquals("Mugatu", oPerson.get().getName());
-
-
-    }
-
-
-    @Test
-    void findWithNoElementAccepted() {
-        Person hansel = new Person("Hansel", 22);
-        Person mugatu = new Person("Mugatu", 25);
-        List<Person> inputPersons = List.of(hansel, mugatu);
-        int inputAge = 23;
-
-        Optional<Person> oPerson = finder.find(inputPersons, inputAge);
-
-        Assertions.assertTrue(oPerson.isEmpty());
-
-    }
-
 }
