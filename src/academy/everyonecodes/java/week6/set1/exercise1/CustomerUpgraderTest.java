@@ -10,40 +10,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerUpgraderTest {
     CustomerUpgrader upgrader = new CustomerUpgrader();
 
-    @Test
-    void upgradeToBusinessClass() {
-        Customer customer = new Customer("Sanaz", "Economy Class");
-        upgrader.upgrade(customer);
-        String result = "Business Class";
-        String expected = "Business Class";
-
-        Assertions.assertEquals(expected, result);
-
-    }
-
-    @Test
-    void upgradeCornerCase() {
-        Customer customer = new Customer("Sanaz", "Business Class");
-        upgrader.upgrade(customer);
-        String result = "Business Class";
-        String expected = "Business Class";
-
-        Assertions.assertEquals(expected, result);
-
-    }
-    /*@ParameterizedTest
+    @ParameterizedTest
     @CsvSource({
-            "Business Class, Economy Class",
-            "Business Class, Business Class"
+            "business, Peter, economy",
+            "business, Lisa, business",
     })
+    void upgrade(String expected, String name, String customerClass) {
+        Customer customer = new Customer(name, customerClass);
 
-    void upgrade(Customer expectedClass){
-        Customer customerTest = new Customer("Sanaz", "Business Class" );
+        upgrader.upgrade(customer);
 
-        String expected = upgrade(customerTest);
-        String result = customerTest.getCustomerClass();
-        Assertions.assertEquals(expected, result);
-    }*/
+        Assertions.assertEquals(expected, customer.getCustomerClass());
+    }
+
 
 
 }

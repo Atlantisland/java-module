@@ -9,14 +9,38 @@ import java.util.Optional;
 
 class LongestNameFinderTest {
     LongestNameFinder finder = new LongestNameFinder();
-    Character character = new Character(" Aegon Targaryen", "", "Male");
 
     @Test
-    void findTest() {
-        List<Character> input = List.of();
-        Optional<Character> oResult = finder.find(input);
-        Optional<Character> oExpected = Optional.of(character);
+    void findLengthZero() {
+        List<Character> characters = List.of();
 
-        Assertions.assertTrue(oResult.isEmpty());
+        Optional<Character> oCharacter = finder.find(characters);
+
+        Assertions.assertTrue(oCharacter.isEmpty());
+    }
+
+    @Test
+    void findLength1() {
+        String name = "Andrea";
+        List<Character> characters = List.of(new Character(name, Optional.empty(), "0"));
+
+        Optional<Character> oCharacter = finder.find(characters);
+
+        Assertions.assertTrue(oCharacter.isPresent());
+        Assertions.assertEquals(name, oCharacter.get().getName());
+    }
+
+    @Test
+    void findLength2() {
+        List<Character> characters = List.of(new Character("Tom", Optional.empty(), "0"),
+                new Character("Andrea", Optional.empty(), "0")
+        );
+
+        Optional<Character> oCharacter = finder.find(characters);
+
+        Assertions.assertTrue(oCharacter.isPresent());
+        String expected = "Andrea";
+        Assertions.assertEquals(expected, oCharacter.get().getName());
     }
 }
+

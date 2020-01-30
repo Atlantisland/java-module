@@ -1,4 +1,6 @@
-package academy.everyonecodes.java.week2.serciceClassExamples.examplesTwo;
+package academy.everyonecodes.java.week2.serciceClassExamples.Exercise2;
+
+import academy.everyonecodes.java.week2.serciceClassExamples.Exercise2.*;
 
 import java.util.List;
 

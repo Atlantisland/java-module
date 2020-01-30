@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DigitSumCalculatorTest {
@@ -12,14 +14,20 @@ class DigitSumCalculatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "9, 1220030100",
-            "12, 39",
-            "0, 0"
+            "0, 0",
+            "1, 1",
+            "2, 11",
+            "3, 12",
+            "6, 123",
+            "14, 1292",
+            "17, 248102",
     })
+    void calculate(int expected, int number) {
+        int result = calculator.calculate(number);
 
-    void calculate(int expected, int input){
-        int result = calculator.calculate(input);
         Assertions.assertEquals(expected, result);
     }
+
+
 
 }

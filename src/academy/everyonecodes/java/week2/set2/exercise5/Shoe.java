@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise5;
+/*package academy.everyonecodes.java.week2.set2.exercise5;
 
 public class Shoe {
     private int shoeSize;
@@ -17,3 +17,5 @@ public class Shoe {
         return color;
     }
 }
+
+ */

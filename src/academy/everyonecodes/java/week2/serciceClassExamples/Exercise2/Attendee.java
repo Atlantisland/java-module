@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.serciceClassExamples.examplesTwo;
+package academy.everyonecodes.java.week2.serciceClassExamples.Exercise2;
 
 public class Attendee {
     private String attendeeName;

@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week3.set2.exercise2;
+/*package academy.everyonecodes.java.week3.set2.exercise2;
 
 import academy.everyonecodes.java.week2.set2.exercise4.DistanceCalculator;
 import org.junit.jupiter.api.Assertions;
@@ -24,3 +24,5 @@ class DivisionCalculatorTest {
     }
 
 }
+
+ */

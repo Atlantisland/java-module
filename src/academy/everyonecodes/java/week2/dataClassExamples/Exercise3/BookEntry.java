@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.dataClassExamples;
+package academy.everyonecodes.java.week2.dataClassExamples.Exercise3;
 
 public class BookEntry {
     private String title;

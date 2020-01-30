@@ -7,19 +7,32 @@ import java.util.List;
 
 public class DeadCharactersExtractor {
 
+    private GotDataReader reader = new GotDataReader();
+    private FileWriter writer = new FileWriter();
+
     public void extract() {
-        GotDataReader reader = new GotDataReader();
-        FileWriter writer = new FileWriter();
+        List<Character> characters = reader.read();
+        List<String> names = getDeadCharacterNames(characters);
+        write(names);
+    }
 
-        String contentRootPath = "src/academy/everyonecodes/java/week5/set2/files/got-characters.csv";
-
-        List<Character> characterList = reader.read(contentRootPath);
-        List<String> nameOfDeadCharacterList = new ArrayList<>();
-        for (Character character : characterList) {
-            String characterBookOfDeath = character.getBookOfDeath();
-            if (!characterBookOfDeath.isEmpty()) {
-                nameOfDeadCharacterList.add(character.getName());
+    private List<String> getDeadCharacterNames(List<Character> characters) {
+        List<String> names = new ArrayList<>();
+        for (Character character : characters) {
+            if (isDead(character)) {
+                String name = character.getName();
+                names.add(name);
             }
         }
+        return names;
+    }
+
+    private boolean isDead(Character character) {
+        return character.getBookOfDeath().isPresent();
+    }
+
+    private void write(List<String> names) {
+        String file = "src/academy/everyonecodes/live/files/deaths.txt";
+        writer.write(file, names);
     }
 }

@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise1;
+/*package academy.everyonecodes.java.week2.set2.exercise1;
 
 public class Application {
 
@@ -11,3 +11,5 @@ public class Application {
     }
 
 }
+
+ */

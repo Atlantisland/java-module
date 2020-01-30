@@ -7,56 +7,35 @@ import java.util.List;
 public class ProblemSolving9 {
 
     public static boolean isBigger(int numberOne, int numberTwo) {
-        boolean isBigger = true;
-        if (numberOne < numberTwo) {
-            isBigger = false;
-
-        }
-
-        return isBigger;
+        return numberOne > numberTwo;
 
     }
 
     public static boolean isSmaller(int numberOne, int numberTwo) {
-        boolean isSmaller = true;
-        if (numberOne > numberTwo) {
-            isSmaller = false;
-
-        }
-
-        return isSmaller;
+        return numberOne < numberTwo;
 
     }
 
     public static int getBiggest(List<Integer> numbers) {
-        int biggestNumber = numbers.get(0);
-        int position = 1;
-        while (position < numbers.size()) {
-            if (isBigger(numbers.get(position), biggestNumber)) {
-                biggestNumber = numbers.get(position);
-
+        int biggest = numbers.get(0);
+        for (int num : numbers) {
+            if (isBigger(num, biggest)) {
+                biggest = num;
             }
-
-            position++;
-
         }
 
-        return biggestNumber;
+        return biggest;
     }
 
     public static int getSmallest(List<Integer> numbers) {
-        int smallestNumber = numbers.get(0);
-        int position = 1;
-        while (position < numbers.size()) {
-            if (isSmaller(numbers.get(position), smallestNumber)) {
-                smallestNumber = numbers.get(position);
-
+        int smallest = numbers.get(0);
+        for (int num : numbers) {
+            if (isSmaller(num, smallest)) {
+                smallest = num;
             }
-            position++;
-
         }
 
-        return smallestNumber;
+        return smallest;
 
     }
 

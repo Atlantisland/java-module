@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class DoubleRightShifter {
-    public void shiftTwo(List<Double> numbers) {
+    public List<Double> shiftTwo(List<Double> numbers) {
         Collections.rotate(numbers, 2);
+        return numbers;
     }
 }

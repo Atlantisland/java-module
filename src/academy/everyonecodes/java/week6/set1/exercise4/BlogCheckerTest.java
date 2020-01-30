@@ -15,28 +15,23 @@ class BlogCheckerTest {
     BlogChecker checker = new BlogChecker();
 
     @Test
-    void checkContainsBlog() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, true);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, true);
-        Post postThree = new Post("Post TitleThree", "Content Three", date, true);
-        List<Post> posts = List.of(postOne, postTwo, postThree);
-        Blog blog = new Blog("Blog title", posts, date);
-        Website website = new Website("content", "url", Optional.of(blog));
-        Boolean result = checker.hasBlog(website);
-        Assertions.assertTrue(result);
+    void hasBlogReturnsFalse() {
+        Website website = new Website("www.everyonecodes.academy", "content", Optional.empty());
+
+        boolean result = checker.hasBlog(website);
+
+        Assertions.assertFalse(result);
     }
 
     @Test
-    void checkContainsNoBlog() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, false);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, false);
-        Post postThree = new Post("Post TitleThree", "Content Three", date, false);
-        List<Post> posts = List.of(postOne, postTwo, postThree);
-        Blog blog = new Blog("Blog title", posts, date);
-        Website website = new Website("content", "url", Optional.of(blog));
-        Boolean result = checker.hasBlog(website);
+    void hasBlogReturnsTrue() {
+        Date date = new Date(01, 01, 2020);
+        Blog blog = new Blog("title", List.of(), date);
+        Website website = new Website("www.everyonecodes.academy", "content", Optional.of(blog));
+
+        boolean result = checker.hasBlog(website);
+
         Assertions.assertTrue(result);
     }
+
 }

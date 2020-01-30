@@ -4,8 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class IntegersLeftsShifter {
-    public void shiftOne(List<Integer> numbers) {
+    public List<Integer>  shiftOne(List<Integer> numbers) {
         Collections.rotate(numbers, -1);
+        return numbers;
     }
 
 }

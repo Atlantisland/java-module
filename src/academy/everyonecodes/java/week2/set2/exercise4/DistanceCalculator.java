@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise4;
+/*package academy.everyonecodes.java.week2.set2.exercise4;
 
 public class DistanceCalculator {
 
@@ -8,3 +8,5 @@ public class DistanceCalculator {
         return distanceInKilometers;
     }
 }
+
+ */

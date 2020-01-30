@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise5;
+/*package academy.everyonecodes.java.week2.set2.exercise5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,3 +25,5 @@ public class ShopAssistant {
         }
     }
 }
+
+ */

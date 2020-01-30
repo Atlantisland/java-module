@@ -1,9 +1,13 @@
-package academy.everyonecodes.java.week2.dataClassExamples;
+package academy.everyonecodes.java.week2.dataClassExamples.Exercise1;
 
 public class Robot {
 
     private String name;
     private int money;
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     public Robot(String name, int money) {
         this.name = name;
@@ -14,15 +18,9 @@ public class Robot {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
+
 }

@@ -2,15 +2,28 @@ package academy.everyonecodes.java.week6.set2.exercise3;
 
 public class TemplateChooser {
     public String choose(String name) {
-        if (name.startsWith("Ms.") || name.startsWith("Mrs.")) {
-            return "female";
+        if (isHokopokoFamily(name)) {
+            return "privileged";
         }
-        if (name.startsWith("Mr.")) {
+        if (isMale(name)) {
             return "male";
         }
-        if (name.startsWith("Hokopoko")) {
-            return "privileged";
+        if (isFemale(name)) {
+            return "female";
         }
         return "default";
     }
+
+    private boolean isHokopokoFamily(String name) {
+        return name.contains("Hokopoko");
+    }
+
+    private boolean isMale(String name) {
+        return name.startsWith("Mr.");
+    }
+
+    private boolean isFemale(String name) {
+        return name.startsWith("Ms.") || name.startsWith("Mrs.");
+    }
+
 }

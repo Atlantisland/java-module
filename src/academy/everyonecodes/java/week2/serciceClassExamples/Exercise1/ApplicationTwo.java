@@ -1,4 +1,8 @@
-package academy.everyonecodes.java.week2.serciceClassExamples.examplesTwo;
+package academy.everyonecodes.java.week2.serciceClassExamples.Exercise1;
+
+import academy.everyonecodes.java.week2.serciceClassExamples.Exercise1.Door;
+import academy.everyonecodes.java.week2.serciceClassExamples.Exercise1.DoorOpener;
+import academy.everyonecodes.java.week2.serciceClassExamples.Exercise1.Key;
 
 public class ApplicationTwo {
     public static void main(String[] args) {

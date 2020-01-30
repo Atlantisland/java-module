@@ -25,12 +25,16 @@ class HappinessDataReaderTest {
         HappinessRecord resultLast = result.get(result.size() - 1);
         Assertions.assertEquals(expectedLast, resultLast);
 
-        /*private void assertRecordEquals(HappinessRecord expected, HappinessRecord actual) {
-            Assertions.assertEquals(expected.getCountry(), actual.getCountry());
-            Assertions.assertEquals(expected.getRank(), actual.getRank());
-            Assertions.assertEquals(expected.getScore(), actual.getScore());
-        }*/
+    }
+}
+
+        /*private void assertRecordEquals(expectedFirst, resultFirst) {
+            Assertions.assertEquals(expectedFirst.getCountry(), resultFirst.getCountry());
+            Assertions.assertEquals(expectedFirst.getRank(), resultFirst.getRank());
+            Assertions.assertEquals(expectedFirst.getScore(), resultFirst.getScore());
+        }
 
 
     }
-}
+
+         */

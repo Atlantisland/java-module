@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise3;
+/*package academy.everyonecodes.java.week2.set2.exercise3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,3 +30,5 @@ public class HikerGatherer {
         return hikers;
     }
 }
+
+ */

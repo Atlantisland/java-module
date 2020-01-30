@@ -11,14 +11,3 @@ public class LetterPositionFinder {
 
     }
 }
-
-// I am totally blocked (:D) therefore I write my strategy:
-
-//In order to cover the case that the word doesnt have the letter:
-//use -> condition with contain method and returns Optional.empty
-
-//in order to cover the case that the word has the letter:
-// take every letter of the word (use-> traits) and compare it with the letter-> use loop (along the length of the word)
-// and use -> equals method.
-//at the end it returns Optional.of() with the position where letter is into the word.
-

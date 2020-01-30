@@ -1,4 +1,6 @@
-package academy.everyonecodes.java.week2.dataClassExamples;
+package academy.everyonecodes.java.week2.dataClassExamples.Exercise1;
+
+import academy.everyonecodes.java.week2.dataClassExamples.Exercise1.Robot;
 
 public class Application {
     public static void main(String[] args) {

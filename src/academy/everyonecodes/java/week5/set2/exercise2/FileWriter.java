@@ -7,8 +7,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class FileWriter {
-    public void write(String contentRootPath, List<String> lines) {
-        Path path = Path.of(contentRootPath);
+    public void write(String fileLocation, List<String> lines) {
+        Path path = Path.of(fileLocation);
         try {
             Files.write(path, lines);
         } catch (IOException e) {
@@ -17,8 +17,8 @@ public class FileWriter {
 
     }
 
-    public void append(String contentRootPath, List<String> lines) {
-        Path path = Path.of(contentRootPath);
+    public void append(String fileLocation, List<String> lines) {
+        Path path = Path.of(fileLocation);
         try {
             Files.write(path, lines, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         } catch (IOException e) {

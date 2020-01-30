@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise3;
+/*package academy.everyonecodes.java.week2.set2.exercise3;
 
 import java.util.List;
 
@@ -11,3 +11,5 @@ public class Application {
         hikeDisplayer.display(hike);
     }
 }
+
+ */

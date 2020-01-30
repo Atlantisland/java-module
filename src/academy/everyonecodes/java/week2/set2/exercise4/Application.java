@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise4;
+/*package academy.everyonecodes.java.week2.set2.exercise4;
 
 import java.util.List;
 
@@ -16,3 +16,5 @@ public class Application {
         System.out.println("Their average total distance in Km is " + distance);
     }
 }
+
+ */

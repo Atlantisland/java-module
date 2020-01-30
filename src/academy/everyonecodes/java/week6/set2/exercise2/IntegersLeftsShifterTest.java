@@ -15,23 +15,51 @@ class IntegersLeftsShifterTest {
     IntegersLeftsShifter shifter = new IntegersLeftsShifter();
 
     @Test
-    void shiftEmptyList(){
-        List<Integer> input = List.of();
-        List<Integer> copyInput = new ArrayList<>(input);
-        shifter.shiftOne(copyInput);
-        List<Integer> result = List.of();
-        List<Integer> copyExpected = new ArrayList<>(copyInput);
-        Assertions.assertEquals(copyExpected, result);
+    void shiftOneLength0() {
+        List<Integer> numbers = new ArrayList<>();
+
+        List<Integer> result = shifter.shiftOne(numbers);
+
+        List<Integer> expected = List.of();
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
-    void shift(){
-        List<Integer> input = List.of(1, 2, 3, 4);
-        List<Integer> copyInput = new ArrayList<>(input);
-        shifter.shiftOne(copyInput);
-        List<Integer> expected = List.of(2, 3, 4, 1);
-        List<Integer> copyExpected = new ArrayList<>(expected);
-        Assertions.assertEquals(copyExpected, copyInput);
+    void shiftOneLength1() {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+
+        List<Integer> result = shifter.shiftOne(numbers);
+
+        List<Integer> expected = List.of(1);
+        Assertions.assertEquals(expected, result);
+
     }
 
+    @Test
+    void shiftOneLength2() {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+
+        List<Integer> result = shifter.shiftOne(numbers);
+
+        List<Integer> expected = List.of(2, 1);
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void shiftOneLength3() {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        List<Integer> result = shifter.shiftOne(numbers);
+
+        List<Integer> expected = List.of(2, 3, 1);
+        Assertions.assertEquals(expected, result);
+    }
 }
+
+

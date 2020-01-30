@@ -15,22 +15,25 @@ class BlogCreationDateRetrieverTest {
     BlogCreationDateRetriever retriever = new BlogCreationDateRetriever();
 
     @Test
-    void retrieve() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, true);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, true);
-        Post postThree = new Post("Post TitleThree", "Content Three", date, true);
-        List<Post> posts = List.of(postOne, postTwo, postThree);
-        Blog blog = new Blog("Blog title", posts, date);
-        Website website = new Website("content", "url", Optional.of(blog));
-        Optional<Date> oResult = retriever.retrieve(website);
+    void retrieveReturnsEmptyOptional() {
+        Website website = new Website("www.everyonecodes.academy", "content", Optional.empty());
 
-        Assertions.assertTrue(oResult.isPresent());
-        Date result = oResult.get();
-        Date expected = new Date(1, 3, 2020);
-        Assertions.assertEquals(expected.getDay(), result.getDay());
-        Assertions.assertEquals(expected.getMonth(), result.getMonth());
-        Assertions.assertEquals(expected.getYear(), result.getYear());
+        Optional<Date> oDate = retriever.retrieve(website);
+
+        Assertions.assertTrue(oDate.isEmpty());
     }
+
+    @Test
+    void retrieveReturnsOptionalWithDate() {
+        Date date = new Date(01, 01, 2020);
+        Blog blog = new Blog("title", List.of(), date);
+        Website website = new Website("www.everyonecodes.academy", "content", Optional.of(blog));
+
+        Optional<Date> oDate = retriever.retrieve(website);
+
+        Assertions.assertTrue(oDate.isPresent());
+        Assertions.assertEquals(date, oDate.get());
+    }
+
 
 }

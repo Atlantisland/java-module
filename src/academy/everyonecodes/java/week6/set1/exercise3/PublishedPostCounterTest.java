@@ -12,40 +12,46 @@ class PublishedPostCounterTest {
     PublishedPostCounter counter = new PublishedPostCounter();
 
     @Test
-    void countOnePost() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, true);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, false);
-        List<Post> posts = List.of(postOne, postTwo);
-        Blog blog = new Blog("Blog Title", posts, date);
-        int result = counter.count(blog);
-        int expected = 1;
-        Assertions.assertEquals(expected, result);
+    void countReceivesNoPosts() {
+        List<Post> posts = List.of();
+        testCount(0, posts);
     }
 
     @Test
-    void countNoPost() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, false);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, false);
-        List<Post> posts = List.of(postOne, postTwo);
-        Blog blog = new Blog("Blog Title", posts, date);
-        int result = counter.count(blog);
-        int expected = 0;
-        Assertions.assertEquals(expected, result);
+    void countReceivesNoPublishedPosts() {
+        List<Post> posts = List.of(createPost(false), createPost(false));
+        testCount(0, posts);
     }
 
     @Test
-    void countThreePosts() {
-        Date date = new Date(1, 3, 2020);
-        Post postOne = new Post("Post TitleOne", "Content One", date, true);
-        Post postTwo = new Post("Post TitleTwo", "Content Two", date, true);
-        Post postThree = new Post("Post TitleThree", "Content Three", date, true);
-        List<Post> posts = List.of(postOne, postTwo, postThree);
-        Blog blog = new Blog("Blog Title", posts, date);
+    void countReceivesOnePublishedPosts() {
+        List<Post> posts = List.of(createPost(true), createPost(false));
+        testCount(1, posts);
+    }
+
+    @Test
+    void countReceivesTwoPublishedPosts() {
+        List<Post> posts = List.of(createPost(true), createPost(true));
+        testCount(2, posts);
+    }
+
+    void testCount(int expected, List<Post> posts) {
+        Blog blog = createBlog(posts);
+
         int result = counter.count(blog);
-        int expected = 3;
+
         Assertions.assertEquals(expected, result);
     }
+
+    Blog createBlog(List<Post> posts) {
+        Date date = new Date(01, 01, 2020);
+        return new Blog("title", posts, date);
+    }
+
+    Post createPost(boolean isPublished) {
+        Date date = new Date(01, 01, 2020);
+        return new Post("title", "Content", date, isPublished);
+    }
+
 
 }

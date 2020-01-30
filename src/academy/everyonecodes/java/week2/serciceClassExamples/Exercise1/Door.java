@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.serciceClassExamples.examplesTwo;
+package academy.everyonecodes.java.week2.serciceClassExamples.Exercise1;
 
 public class Door {
     private int doorNumber;

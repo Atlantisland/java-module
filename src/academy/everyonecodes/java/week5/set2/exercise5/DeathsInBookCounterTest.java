@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week5.set2.exercise5;
+/*package academy.everyonecodes.java.week5.set2.exercise5;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,3 +20,5 @@ class DeathsInBookCounterTest {
         Assertions.assertEquals(expected, result);
     }
 }
+
+ */

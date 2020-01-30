@@ -6,17 +6,35 @@ import java.util.List;
 import java.util.Optional;
 
 public class SpotifyDataParser {
-    public Optional<Song> parseLine(String input) {
-        List<String> dataSong = Arrays.asList(input.split(";", -1));
-        String title = dataSong.get(1);
-        int rank = Integer.valueOf(dataSong.get(0));
-        String artist = dataSong.get(2);
-        Song currentSong = new Song(title, rank, artist);
-        if (dataSong.size() > 3) {
-            return Optional.of(currentSong);
-        }
-        return Optional.empty();
+    private int elementsPerLine = 14;
+    private int rankIndex = 0;
+    private int titleIndex = 1;
+    private int artistIndex = 2;
 
+    public Optional<Song> parseLine(String line) {
+        List<String> elements = List.of(line.split(";", -1));
+        if (elements.size() != elementsPerLine) {
+            return Optional.empty();
+        }
+        return parseValues(elements.get(titleIndex), elements.get(rankIndex), elements.get(artistIndex));
     }
+
+    Optional<Song> parseValues(String title, String rankString, String artist) {
+        try {
+            int rank = Integer.valueOf(rankString);
+            title = removeQuotes(title);
+            artist = removeQuotes(artist);
+            Song song = new Song(title, rank, artist);
+            return Optional.of(song);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+    }
+
+    String removeQuotes(String quotedText) {
+        return quotedText.replace("\"", "");
+    }
+
 
 }

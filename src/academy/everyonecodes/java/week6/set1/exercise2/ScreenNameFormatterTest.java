@@ -11,30 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScreenNameFormatterTest {
     ScreenNameFormatter creator = new ScreenNameFormatter();
 
-    @Test
-    void createEconomyClass() {
-        Customer customer = new Customer("Sanaz", "Economy Class");
-        String result = creator.create(customer);
-        String expected = "sanaz";
+    @ParameterizedTest
+    @CsvSource({
+            "maria, Maria, something else",
+            "maria, Maria, economy",
+            "MARIA, Maria, business",
+    })
+    void format(String expected, String name, String customerClass) {
+        Customer customer = new Customer(name, customerClass);
+
+        String result = creator.format(customer);
 
         Assertions.assertEquals(expected, result);
     }
 
-    @Test
-    void createBusinessClass() {
-        Customer customer = new Customer("Sanaz", "Business Class");
-        String result = creator.create(customer);
-        String expected = "SANAZ";
-
-        Assertions.assertEquals(expected, result);
-    }
-
-    @Test
-    void createBusinessClassNameWithNumber() {
-        Customer customer = new Customer("Sanaz3", "Business Class");
-        String result = creator.create(customer);
-        String expected = "SANAZ3";
-
-        Assertions.assertEquals(expected, result);
-    }
 }

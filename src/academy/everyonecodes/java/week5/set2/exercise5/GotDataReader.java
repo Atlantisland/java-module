@@ -1,29 +1,29 @@
 package academy.everyonecodes.java.week5.set2.exercise5;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class GotDataReader {
-    private String path = "src/academy/everyonecodes/java/week5/set2/files/got-characters.csv";
-    private GotDataReader reader = new GotDataReader();
     private FileReader reader = new FileReader();
+    private String file = "src/academy/everyonecodes/live/files/got-characters.csv";
+    private GotDataParser parser = new GotDataParser();
 
     public List<Character> read() {
-        List<String> lines = reader.read(path);
+        List<String> lines = reader.read(file);
+        removeHeaders(lines);
+        return transformIntoCharacters(lines);
+    }
+
+    private void removeHeaders(List<String> lines) {
+        lines.remove(0);
+    }
+
+    private List<Character> transformIntoCharacters(List<String> lines) {
         List<Character> characters = new ArrayList<>();
         for (String line : lines) {
-            Optional<Character> oCharacter = parser.parseLine(line);
-            if (oCharacter.isPresent()) {
-                characters.add(oCharacter.get());
-            }
+            Character character = parser.parseLine(line);
+            characters.add(character);
         }
         return characters;
     }
-
-
 }

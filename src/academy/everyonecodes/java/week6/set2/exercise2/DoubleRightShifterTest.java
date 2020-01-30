@@ -11,24 +11,51 @@ class DoubleRightShifterTest {
     DoubleRightShifter shifter = new DoubleRightShifter();
 
     @Test
-    void shiftEmptyList() {
-        List<Double> input = List.of();
-        List<Double> copyInput = new ArrayList<>(input);
-        shifter.shiftTwo(copyInput);
-        List<Double> result = List.of();
-        List<Double> copyExpected = new ArrayList<>(copyInput);
-        Assertions.assertEquals(copyExpected, result);
+    void shiftOneLength0() {
+        List<Double> numbers = new ArrayList<>();
+
+        List<Double> result = shifter.shiftTwo(numbers);
+
+        List<Double> expected = List.of();
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
-    void shift() {
-        List<Double> input = List.of(1.5, 2.3, 3.4, 4.6);
-        List<Double> copyInput = new ArrayList<>(input);
-        shifter.shiftTwo(copyInput);
-        List<Double> expected = List.of(3.4, 4.6, 1.5, 2.3);
-        List<Double> copyExpected = new ArrayList<>(expected);
-        Assertions.assertEquals(copyExpected, copyInput);
+    void shiftTwoLength1() {
+        List<Double> numbers = new ArrayList<>();
+        numbers.add(1.0);
+
+        List<Double> result = shifter.shiftTwo(numbers);
+
+        List<Double> expected = List.of(1.0);
+        Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    void shiftTwoLength2() {
+        List<Double> numbers = new ArrayList<>();
+        numbers.add(1.0);
+        numbers.add(2.0);
+
+        List<Double> result = shifter.shiftTwo(numbers);
+
+        List<Double> expected = List.of(1.0, 2.0);
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void shiftTwoLength3() {
+        List<Double> numbers = new ArrayList<>();
+        numbers.add(1.0);
+        numbers.add(2.0);
+        numbers.add(3.0);
+
+        List<Double> result = shifter.shiftTwo(numbers);
+
+        List<Double> expected = List.of(2.0, 3.0, 1.0);
+        Assertions.assertEquals(expected, result);
+    }
+
 
 }
 

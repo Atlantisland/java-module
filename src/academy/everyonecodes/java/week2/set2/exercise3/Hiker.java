@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week2.set2.exercise3;
+/*package academy.everyonecodes.java.week2.set2.exercise3;
 
 public class Hiker {
     private String hikerName;
@@ -17,3 +17,5 @@ public class Hiker {
         return telephoneNumber;
     }
 }
+
+ */

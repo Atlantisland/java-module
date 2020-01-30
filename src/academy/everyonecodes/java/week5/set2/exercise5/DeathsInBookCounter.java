@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week5.set2.exercise5;
+/*package academy.everyonecodes.java.week5.set2.exercise5;
 
 
 import java.util.List;
@@ -17,3 +17,5 @@ public class DeathsInBookCounter {
 
     }
 }
+
+ */

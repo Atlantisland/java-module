@@ -11,7 +11,7 @@ public class TotalDeathCounter {
     public int count(List<Character> characterList) {
         int counter = 0;
         for (Character character : characterList) {
-            String characterBookOfDeath = character.getBookOfDeath();
+            Optional<String> characterBookOfDeath = character.getBookOfDeath();
             if (!characterBookOfDeath.isEmpty()) {
                 counter++;
             }

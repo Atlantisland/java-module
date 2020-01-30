@@ -1,4 +1,6 @@
-package academy.everyonecodes.java.week2.dataClassExamples;
+package academy.everyonecodes.java.week2.dataClassExamples.Exercise2;
+
+import academy.everyonecodes.java.week2.dataClassExamples.Exercise2.TvShow;
 
 import java.util.List;
 

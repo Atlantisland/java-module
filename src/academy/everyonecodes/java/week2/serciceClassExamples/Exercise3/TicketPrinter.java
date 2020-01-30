@@ -1,4 +1,6 @@
-package academy.everyonecodes.java.week2.serciceClassExamples.examplesTwo;
+package academy.everyonecodes.java.week2.serciceClassExamples.Exercise3;
+
+import academy.everyonecodes.java.week2.serciceClassExamples.Exercise3.MovieNamePrinter;
 
 public class TicketPrinter {
     private MovieNamePrinter movieNamePrinter;
