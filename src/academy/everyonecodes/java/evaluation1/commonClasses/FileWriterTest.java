@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.temp;
+package academy.everyonecodes.java.evaluation1.commonClasses;
 
 import academy.everyonecodes.java.week5.set2.exercise1.FileReader;
 import org.junit.jupiter.api.AfterEach;

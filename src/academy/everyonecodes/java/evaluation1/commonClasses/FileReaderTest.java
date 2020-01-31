@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.temp;
+package academy.everyonecodes.java.evaluation1.commonClasses;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

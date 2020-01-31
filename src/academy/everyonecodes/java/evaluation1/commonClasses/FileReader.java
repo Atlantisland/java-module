@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.temp;
+package academy.everyonecodes.java.evaluation1.commonClasses;
 
 import java.io.IOException;
 import java.nio.file.Files;
