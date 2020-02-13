@@ -16,7 +16,7 @@ public class Tshirt {
     }
 
     public Size getSize() {
-        return size;
+        return this.size;
     }
 
     public int getPrice() {
