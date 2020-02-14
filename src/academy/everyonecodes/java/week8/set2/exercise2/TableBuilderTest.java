@@ -1,22 +1,21 @@
 package academy.everyonecodes.java.week8.set2.exercise2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TableBuilderTest {
     TableBuilder tableBuilder = new TableBuilder();
 
     @Test
-    void test(){
-        Furniture resultedFurniture = new Furniture("table");
-        tableBuilder.build(resultedFurniture);
-        Furniture expectedFurniture = new Furniture("table");
-        expectedFurniture.getParts().add("leg");
-        expectedFurniture.getParts().add("leg");
-        expectedFurniture.getParts().add("leg");
-        expectedFurniture.getParts().add("leg");
-        expectedFurniture.getParts().add("surface");
-        Assertions.assertEquals(expectedFurniture, resultedFurniture);
-    }
+    void test() {
+        Furniture result = tableBuilder.build();
 
+        Furniture expected = new Furniture("Table");
+        expected.getParts().addAll(List.of("Leg", "Leg", "Leg", "Leg", "Surface"));
+        assertEquals(expected, result);
+
+    }
 }

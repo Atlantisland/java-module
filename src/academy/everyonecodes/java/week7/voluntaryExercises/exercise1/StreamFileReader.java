@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week7.set2.exercise4;
+package academy.everyonecodes.java.week7.voluntaryExercises.exercise1;
 
 import java.io.IOException;
 import java.nio.file.Files;

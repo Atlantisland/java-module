@@ -14,7 +14,7 @@ public class BiggerThan3StringAsStringTest {
 
         List<String> result = numbers.stream()
                 .filter(number -> number > 3)
-                .map(number -> String.valueOf(number))
+                .map(number -> number.toString())
                 .collect(Collectors.toList());
 
         List<String> expected = List.of("4", "5");

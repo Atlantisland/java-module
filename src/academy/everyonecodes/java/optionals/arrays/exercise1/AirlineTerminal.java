@@ -3,20 +3,20 @@ package academy.everyonecodes.java.optionals.arrays.exercise1;
 import java.util.Scanner;
 
 public class AirlineTerminal {
-    private static String[] getItems() {
+    private String[] getItems() {
         String[] items = new String[5];
         System.out.println("Please tell me your 5 items:");
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < items.length; i++) {
-            Scanner scanner = new Scanner(System.in);
-            String item = scanner.nextLine();
+            items[i] = scanner.nextLine();
 
-            items[i] = item;
         }
 
         return items;
+
     }
 
-    private static boolean isAnItemSuspicious(String[] items) {
+    private boolean isAnItemSuspicious(String[] items) {
         System.out.println("Thank you for boarding, we will check your items...");
         for (String item : items) {
             if (item.equals("Bomb")) {
@@ -26,7 +26,7 @@ public class AirlineTerminal {
         return false;
     }
 
-    public static void doPassengerCheckIn() {
+    public void doPassengerCheckIn() {
         System.out.println("WELCOME TO EC AIRLINES!");
         String[] items = getItems();
         if (isAnItemSuspicious(items)) {

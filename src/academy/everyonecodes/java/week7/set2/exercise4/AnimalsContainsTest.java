@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -28,8 +29,12 @@ public class AnimalsContainsTest {
                 .map(String::toUpperCase)
                 .forEach(animal -> appender.append(pathOutput, animal));
 
-        List<String> result = fileReader.read(pathOutput);
-        List<String> expected = fileReader.read(pathExpected);
+        List<String> result = reader.readLines(pathOutput)
+                .collect(Collectors.toList());
+
+        List<String> expected = reader.readLines(pathExpected)
+                .collect(Collectors.toList());
+
         Assertions.assertEquals(expected, result);
 
 
@@ -38,7 +43,7 @@ public class AnimalsContainsTest {
     @AfterEach
     void deleteAppendFile() {
         try {
-            Files.deleteIfExists(Path.of(pathInput));
+            Files.deleteIfExists(Path.of(pathOutput));
         } catch (IOException e) {
             e.printStackTrace();
         }

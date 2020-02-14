@@ -9,21 +9,25 @@ import java.util.List;
 public class AverageWriter {
     private FileReader reader = new FileReader();
     private FileWriter writer = new FileWriter();
+    private LineAverageCalculator calculator = new LineAverageCalculator();
 
     public void write(String pathOne, String pathTwo) {
-        List<String> numbers = reader.read(pathOne);
-        List<String> numbersCopy = new ArrayList<>(numbers);
-        List<Double> averages = new ArrayList<>();
-        double average = 0.0;
-        for (Integer numberCopy : numbersCopy) {
-            average = numberCopy / numberCopy.length();
-            averages.add(average);
+        List<String> lines = reader.read(pathOne);
+        List<String> averages = getAverages(lines);
+        writer.write(pathTwo, averages);
+    }
 
+    private List<String> getAverages(List<String> lines) {
+        List<String> averages = new ArrayList<>();
+        for (String line : lines) {
+            String average = calculator.calculate(line);
+            averages.add(average);
         }
+        return averages;
 
     }
 }
 
-//due to time i cnanot continue. however after creating the numberscopy list there must be a loop
-//the string lines are transformed into numbers in order int the above loop to calcualte the average
-//of the numbers in each line.
+
+
+

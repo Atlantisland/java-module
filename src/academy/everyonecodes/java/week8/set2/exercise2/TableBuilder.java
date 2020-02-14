@@ -4,11 +4,17 @@ import java.util.List;
 
 public class TableBuilder {
 
-    private List<BuildingStep> steps = List.of(new AddLeg(), new AddLeg(), new AddLeg(), new AddLeg(), new AddSurface());
+    private List<BuildingStep> steps = List.of(
+            new AddLeg(),
+            new AddLeg(),
+            new AddLeg(),
+            new AddLeg(),
+            new AddSurface());
 
-    public Furniture build(Furniture furniture) {
+    public Furniture build() {
+        Furniture table = new Furniture("Table");
         steps.stream()
-                .forEach(step -> step.apply(furniture));
-        return furniture;
+                .forEach(step -> step.apply(table));
+        return table;
     }
 }

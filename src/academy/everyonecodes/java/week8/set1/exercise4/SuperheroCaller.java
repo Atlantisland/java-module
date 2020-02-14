@@ -2,21 +2,23 @@ package academy.everyonecodes.java.week8.set1.exercise4;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class SuperheroCaller {
 
     private List<Superhero> superheros;
 
     public SuperheroCaller() {
-        Superman superman = new Superman();
-        Batman batman = new Batman();
-        Spiderman spiderman = new Spiderman();
-        superheros = List.of(batman, superman, spiderman);
+        superheros = List.of(new Batman(), new Superman(), new Spiderman());
     }
 
     public Optional<Superhero> findSuperhero(String keyword) {
         return superheros.stream()
-                .filter(superhero -> superhero.getPrivateName().equals(keyword) || superhero.getSuperheroName().equals(keyword))
+                .filter(getSuperheroPredicate(keyword))
                 .findFirst();
+    }
+
+    private Predicate<Superhero> getSuperheroPredicate(String keyword) {
+        return superhero -> superhero.getPrivateName().equals(keyword) || superhero.getSuperheroName().equals(keyword);
     }
 }

@@ -17,7 +17,7 @@ public class FileLineAppender {
         List<String> lines = List.of(line);
 
         try {
-            Files.write(path, lines, APPEND, CREATE);
+            Files.write(path, lines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }

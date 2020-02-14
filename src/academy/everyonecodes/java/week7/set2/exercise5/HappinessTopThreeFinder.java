@@ -10,7 +10,7 @@ public class HappinessTopThreeFinder {
     public List<String> findTopThree() {
         List<HappinessRecord> records = reader.read();
         return records.stream()
-                .sorted(Comparator.comparing(HappinessRecord::getRank))
+                .sorted(Comparator.comparing(HappinessRecord::getScore).reversed())
                 .limit(3)
                 .map(record -> "Country: " + record.getCountry() + " Score: " + record.getScore())
                 .collect(Collectors.toList());

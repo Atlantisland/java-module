@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.optionals.sets;
+package academy.everyonecodes.java.optionals.sets.exercise1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

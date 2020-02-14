@@ -6,11 +6,10 @@ import java.util.Objects;
 
 public class Furniture {
     private String name;
-    private List<String> parts;
+    private List<String> parts = new ArrayList<>();
 
     public Furniture(String name) {
         this.name = name;
-        parts = new ArrayList<>();
     }
 
     public String getName() {
@@ -19,14 +18,6 @@ public class Furniture {
 
     public List<String> getParts() {
         return parts;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setParts(List<String> parts) {
-        this.parts = parts;
     }
 
     @Override

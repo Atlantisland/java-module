@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 class CalculatorTest {
     Calculator calculator = new Calculator();
 
-    static Stream<Arguments> parameters() {
+    private static Stream<Arguments> parameters() {
         return Stream.of(
                 Arguments.of(Optional.empty(), new Calculation("%", 1.5, 2.3)),
                 Arguments.of(Optional.of(2.0), new Calculation("/", 4.0, 2.0)),
@@ -28,6 +28,6 @@ class CalculatorTest {
     void calculator(Optional<Double> oExpected, Calculation calculation){
         Optional<Double> oResult = calculator.calculate(calculation);
 
-    Assertions.assertEquals(oExpected, oResult);
+    Assertions.assertEquals(oExpected.get(), oResult.get());
 }
 }

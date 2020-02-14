@@ -4,6 +4,7 @@ public class AddSurface implements BuildingStep {
 
     @Override
     public void apply(Furniture furniture) {
-        furniture.getParts().add("surface");
+
+        furniture.getParts().add("Surface");
     }
 }

@@ -29,7 +29,7 @@ class RectangleShaperTest {
         Assertions.assertEquals(shapedExpectedShape, shapedResultShape);
 
         List<RectangleShaper> rectangleShapers = List.of(rectangleShaper);
-        //List<Colored> coloreds = List.of(shaper, colored);
+        List<Colored> coloreds = List.of(colored);
         List<Shaper> shapes = List.of(rectangleShaper, shaper);
 
     }
