@@ -1,14 +1,13 @@
 package academy.everyonecodes.java.optionals.sets.exercise1;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class IntegerListDuplicateRemover {
 
-    public Set<Integer> remove(List<Integer> numbers) {
-        Set<Integer> hset = new LinkedHashSet<>(numbers);
-        return hset;
+    public List<Integer> remove(List<Integer> numbers) {
+        Set<Integer> setNumbers = new LinkedHashSet<>(numbers);
+        List<Integer> result = new ArrayList<>(new LinkedHashSet<>(setNumbers));
+        return result;
 
     }
 
