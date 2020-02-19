@@ -4,26 +4,33 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    public static String[][] getEmptyGameField() {
-        String[][] game = {{"[]", "[]", "[]"}, {"[]", "[]", "[]"}};
+    private String[][] getEmptyGameField() {
+        String[][] game = {new String[3], new String[3], new String[3]};
+        for (int i = 0; i < game.length; i++) {
+            for (int l = 0; l < game.length; l++) {
+                game[i][l] = "[ ]";
+            }
+        }
         return game;
     }
 
-    public static void printGameField(String[][] game) {
-        System.out.println(game);
+    private void printGameField(String[][] game) {
+        for (int i = 0; i < game.length; i++) {
+            for (int j = 0; j < game[i].length; j++) {
+                System.out.print(game[i][j]);
+            }
+            System.out.println("");
+        }
     }
 
-    public static void playOneRound(String[][] game, String player, String symbol) {
+    public void playOneRound(String[][] game, String player, String symbol) {
         System.out.println(player + ", what is your next move?");
         Scanner scanner = new Scanner(System.in);
-        symbol = scanner.nextLine();
-        System.out.println(symbol);
         int row = scanner.nextInt();
-        System.out.println(row);
+        scanner.nextLine();
         int column = scanner.nextInt();
-        System.out.println(column);
-        //if(symbol=="")
-        game[row][column] = symbol;
-
+        scanner.nextLine();
+        game[row][column] = "[" + symbol + "]";
+        printGameField(game);
     }
 }

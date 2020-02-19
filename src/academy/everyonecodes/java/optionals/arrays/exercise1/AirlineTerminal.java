@@ -9,11 +9,8 @@ public class AirlineTerminal {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < items.length; i++) {
             items[i] = scanner.nextLine();
-
         }
-
         return items;
-
     }
 
     private boolean isAnItemSuspicious(String[] items) {
@@ -33,10 +30,7 @@ public class AirlineTerminal {
             System.out.println("Sorry, we cannot allow you to proceed.");
         } else {
             System.out.println("All items are good to go. Enjoy your flight!");
-
         }
-
     }
-
 }
 

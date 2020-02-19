@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.week9.set1.exercise3;
+package academy.everyonecodes.java.week9.set2.exercise3;
 
 public class Cent2 extends MoneyUnit {
 
