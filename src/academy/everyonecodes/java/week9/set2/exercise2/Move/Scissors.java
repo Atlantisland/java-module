@@ -1,9 +1,9 @@
-package academy.everyonecodes.java.week9.set2.exercise2;
+package academy.everyonecodes.java.week9.set2.exercise2.Move;
 
 public class Scissors extends Move {
 
-    public Scissors(String name) {
-        super(name);
+    public Scissors() {
+        super("scissors");
     }
 
 }

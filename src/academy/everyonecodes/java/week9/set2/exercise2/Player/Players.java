@@ -1,21 +1,14 @@
-package academy.everyonecodes.java.week9.set2.exercise2;
-
-import java.util.List;
+package academy.everyonecodes.java.week9.set2.exercise2.Player;
 
 public class Players {
 
-    private static List<Player> players = List.of(
-            new PlayerOne(),
-            new PlayerTwo()
-    );
-
-    public static List<Player> getPlayerOne() {
-        return players;
+    public static Player getPlayerOne() {
+        return new PlayerOne();
 
     }
 
-    public static List<Player> getPlayerTwo() {
-        return players;
+    public static Player getPlayerTwo() {
+        return new PlayerTwo();
 
     }
 }
