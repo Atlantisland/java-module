@@ -8,7 +8,7 @@ public class ChatBot {
         List<String> commands = List.of(command.split(" "));
         try {
             String firstArgument = handleFirstArgument(commands.get(0));
-            String secondArgument = handleSecondArgument(commands.get(1), commands.get(0));
+            String secondArgument = handleSecondArgument(commands.get(1).toLowerCase(), commands.get(0));
             System.out.println(firstArgument + " " + secondArgument);
         } catch (WrongFirstArgumentException | WrongSecondArgumentException error) {
             System.out.println(error.getMessage());
@@ -27,11 +27,11 @@ public class ChatBot {
     String handleSecondArgument(String secondArgument, String firstArgument) throws WrongSecondArgumentException {
         if (firstArgument.equals("temperature")) {
             try {
-                int temperature = Integer.parseInt(secondArgument);
-                if (temperature < 25 && temperature > 0) {
+                int temperatureValue = Integer.parseInt(secondArgument);
+                if (temperatureValue < 25 && temperatureValue > 0) {
                     return "raised by " + secondArgument;
-                } else if (temperature < 0 && temperature > -25) {
-                    return "lowered by " + Math.abs(temperature);
+                } else if (temperatureValue < 0 && temperatureValue > -25) {
+                    return "lowered by " + Math.abs(temperatureValue);
                 }
             } catch (NumberFormatException e) {
                 throw new WrongSecondArgumentException(secondArgument);
