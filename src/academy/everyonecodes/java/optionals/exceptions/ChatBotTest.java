@@ -12,9 +12,10 @@ class ChatBotTest {
             "Temperature, temperature",
             "Lights switched, lights"
     })
-    void handleFirstArgumentValid(String expected, String firstArgument) throws WrongFirstArgumentException {
-        String result = chatBot.handleFirstArgument(firstArgument);
-        Assertions.assertEquals(expected, result);
+    void handleFirstArgumentValid(String expected, String firstArgument) {
+        Assertions.assertDoesNotThrow(() -> {
+            chatBot.handleFirstArgument(firstArgument);
+        });
 
     }
 
@@ -26,7 +27,7 @@ class ChatBotTest {
             "Lights"
 
     })
-    void handleFirstArgumentNonValid(String firstArgument) throws WrongFirstArgumentException {
+    void handleFirstArgumentNonValid(String firstArgument) {
         Assertions.assertThrows(WrongFirstArgumentException.class, () -> {
             chatBot.handleFirstArgument(firstArgument);
         });
@@ -39,8 +40,9 @@ class ChatBotTest {
             "on, on, lights",
             "off, off, lights"
     })
-    void handleSecondArgumentValid(String expected, String secondArgument, String firstArgument) throws WrongSecondArgumentException {
+    void handleSecondArgumentValid(String expected, String secondArgument, String firstArgument) {
         Assertions.assertDoesNotThrow(() -> {
+            chatBot.handleSecondArgument(secondArgument, firstArgument);
         });
     }
 
@@ -55,7 +57,7 @@ class ChatBotTest {
 
 
     })
-    void handleSecondArgumentNonValid(String secondArgument, String firstArgument) throws WrongSecondArgumentException {
+    void handleSecondArgumentNonValid(String secondArgument, String firstArgument) {
         Assertions.assertThrows(WrongSecondArgumentException.class, () -> {
             chatBot.handleSecondArgument(secondArgument, firstArgument);
         });
