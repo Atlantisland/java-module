@@ -2,37 +2,34 @@ package academy.everyonecodes.java.week8.set1.exercise2;
 
 import academy.everyonecodes.java.week8.set1.exercise1.CircleShaper;
 import academy.everyonecodes.java.week8.set1.exercise1.Shaper;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SquareShaperTest {
     @Test
     void getShape() {
         Shaper circleShaper = new CircleShaper();
-        String resultCircle = circleShaper.getShape();
-        String expectedCircle = "Circle";
-        Assertions.assertEquals(expectedCircle, resultCircle);
+        assertEquals("Circle", circleShaper.getShape());
 
         Shaper squareShaper = new SquareShaper();
-        String resultSquare = squareShaper.getShape();
-        String expectedSquare = "Square";
-        Assertions.assertEquals(expectedSquare, resultSquare);
+        assertEquals("Square", squareShaper.getShape());
 
         Shaper triangleShaper = new TriangleShaper();
-        String resultTriangle = triangleShaper.getShape();
-        String expectedTriangle = "Triangle";
-        Assertions.assertEquals(expectedTriangle, resultTriangle);
+        assertEquals("Triangle", triangleShaper.getShape());
 
         //List<CircleShaper> circleShapers = List.of(circleShaper, squareShaper, triangleShaper);
+        // Doesn't work because these variables are of type Shaper
+
         List<Shaper> shapers = List.of(circleShaper, squareShaper, triangleShaper);
         List<String> result = shapers.stream()
                 .map(Shaper::getShape)
-                .collect(Collectors.toList());
-        List<String> expected = List.of("Circle", "Square", "Triangle");
-        Assertions.assertEquals(expected, result);
-    }
+                .collect(toList());
 
+        List<String> expected = List.of("Circle", "Square", "Triangle");
+        assertEquals(expected, result);
+    }
 }

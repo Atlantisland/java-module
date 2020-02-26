@@ -5,6 +5,6 @@ import java.util.List;
 public class TenOnVeggies extends Discount {
 
     public TenOnVeggies() {
-        super(10, List.of("tomato", "paprika", "cucumber"));
+        super(0.10, List.of("tomato", "paprika", "cucumber"));
     }
 }

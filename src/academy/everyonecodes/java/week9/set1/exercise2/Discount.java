@@ -4,26 +4,20 @@ import java.util.List;
 
 public class Discount {
 
-    private int percentage;
-    private List<String> applicableProducts;
+    private double discountPercentage;
+    private List<String> applicableProductNames;
 
-    public Discount(int percentage, List<String> applicableProducts) {
-        this.percentage = percentage;
-        this.applicableProducts = applicableProducts;
-    }
-
-    public int getPercentage() {
-        return percentage;
-    }
-
-    public List<String> getApplicableProducts() {
-        return applicableProducts;
+    public Discount(double discountPercentage, List<String> applicableProductNames) {
+        this.discountPercentage = discountPercentage;
+        this.applicableProductNames = applicableProductNames;
     }
 
     public double apply(List<Product> products) {
         return products.stream()
-                .filter(product -> applicableProducts.contains(product.getName()))
-                .map(price -> price.getPrice() * (percentage / 100.0))
-                .reduce(0.0, Double::sum);
+                .filter(product -> applicableProductNames.contains(product.getName()))
+                .map(Product::getPrice)
+                .mapToDouble(price -> price * discountPercentage)
+                .sum();
     }
+
 }

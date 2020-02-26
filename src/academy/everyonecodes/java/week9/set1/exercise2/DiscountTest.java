@@ -11,28 +11,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiscountTest {
 
-    Discount discount = new Discount(5, List.of("wine"));
-
     static Stream<Arguments> parameters() {
-        Product wine = new Product("wine", 10.0);
-        Product tomato = new Product("tomato", 2.5);
-        Product chocolate = new Product("chocolate", 4.0);
-        Product cheese = new Product("cheese", 6.5);
-        //List<Product> products = List.of(wine, tomato, chocolate, cheese);
-
         return Stream.of(
-                Arguments.of(0.5, List.of(wine, tomato, chocolate)),
-                Arguments.of(0.5, List.of(wine, tomato, chocolate, cheese)),
-                Arguments.of(0.0, List.of())
+                Arguments.of(0, new Discount(0.0, List.of("item1")), List.of()),
+                Arguments.of(0, new Discount(0.0, List.of("item1")),
+                        List.of(createProduct("item1"))),
+                Arguments.of(0, new Discount(0.01, List.of("item1")),
+                        List.of(createProduct("Item1"))),
+                Arguments.of(1, new Discount(0.01, List.of("item1")),
+                        List.of(createProduct("item1"))),
+                Arguments.of(1, new Discount(0.01, List.of("item1")),
+                        List.of(createProduct("item1"), createProduct("item2"))),
+                Arguments.of(2, new Discount(0.01, List.of("item1")),
+                        List.of(createProduct("item1"), createProduct("item1")))
         );
+    }
+
+    static Product createProduct(String name) {
+        return new Product(name, 100);
     }
 
     @ParameterizedTest
     @MethodSource("parameters")
-    void calculate(double expected, List<Product> products) {
+    void apply(double expected, Discount discount, List<Product> products) {
         double result = discount.apply(products);
+
         assertEquals(expected, result);
     }
+
 
 
 

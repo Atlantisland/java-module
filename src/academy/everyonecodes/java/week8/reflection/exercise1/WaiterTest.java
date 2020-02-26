@@ -1,7 +1,5 @@
 package academy.everyonecodes.java.week8.reflection.exercise1;
 
-import academy.everyonecodes.java.week8.reflection.exercise1.cutlery.Cutlery;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,23 +7,25 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class WaiterTest {
     Waiter waiter = new Waiter();
 
-    private static Stream<Arguments> parameters() {
+    static Stream<Arguments> parameters() {
         return Stream.of(
-                Arguments.of(List.of("fork", "knife"), "Fish"),
-                Arguments.of(List.of("spoon"), "Soup"),
-                Arguments.of(List.of(), "")
+                Arguments.of(List.of(), ""),
+                Arguments.of(List.of("Spoon"), "Soup"),
+                Arguments.of(List.of("Fork","Knife" ), "Fish")
         );
-
     }
+
     @ParameterizedTest
     @MethodSource("parameters")
-    void getCutlery(List<Cutlery> expected, String dishName){
-        List<Cutlery> result = waiter.getCutlery(dishName);
+    void prepareTable(List<String> expected, String food) {
+        List<String> result = waiter.getCutlery(food);
 
-        Assertions.assertEquals(expected, result);
+        assertEquals(expected, result);
     }
 
 }

@@ -5,6 +5,6 @@ import java.util.List;
 public class FiveOnWine extends Discount {
 
     public FiveOnWine() {
-        super(5, List.of("wine"));
+        super(0.05, List.of("wine"));
     }
 }

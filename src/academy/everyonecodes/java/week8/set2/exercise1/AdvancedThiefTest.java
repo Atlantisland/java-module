@@ -1,27 +1,26 @@
 package academy.everyonecodes.java.week8.set2.exercise1;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.stream.Stream;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AdvancedThiefTest {
 
+    Thief thief = new AdvancedThief();
+
     @ParameterizedTest
-    @MethodSource("parameters")
-    void test(int expected,Safe safe) {
-        AdvancedThief advancedThief = new AdvancedThief();
-        advancedThief.open(safe);
+    @CsvSource({
+            "2, 4",
+            "0, 2",
+            "-2, 0",
+    })
+    void open(int after, int before) {
+        Safe safe = new Safe("Basic", before);
 
-        Assertions.assertEquals(expected, safe.getDifficultyPoints());
-    }
+        thief.open(safe);
 
-    private static Stream<Arguments> parameters() {
-        return Stream.of(
-                Arguments.of(-2, new Safe(0, 3)),
-                Arguments.of(50, new Safe(52, 36))
-        );
+        Safe expected = new Safe("Basic", after);
+        assertEquals(expected, safe);
     }
 }

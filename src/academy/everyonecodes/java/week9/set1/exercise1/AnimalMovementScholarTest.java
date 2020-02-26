@@ -4,30 +4,31 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AnimalMovementScholarTest {
-    AnimalMovementScholar elaborator = new AnimalMovementScholar();
+    AnimalMovementScholar scholar = new AnimalMovementScholar();
 
     static Stream<Arguments> parameters() {
         return Stream.of(
-                Arguments.of(List.of("walk", "run"), "dog"),
-                Arguments.of(List.of("jump", "fly"), "sparrow"),
-                Arguments.of(List.of("crawl", "jump", "swim", "walk"), "amphibian"),
-                //Arguments.of(List.of("walk", "jump", "crawl", "swim"), "amphibian"),
-                Arguments.of(List.of(), "crocodile")
+                Arguments.of(Optional.empty(), ""),
+                Arguments.of(Optional.empty(), "Sparrow"),
+                Arguments.of(Optional.empty(), "Bird"),
+                Arguments.of(Optional.of("jump,fly"), "sparrow"),
+                Arguments.of(Optional.of("fly,jump,swim,walk"), "bird")
         );
     }
 
     @ParameterizedTest
     @MethodSource("parameters")
-    void elaborate(List<String> expected, String keyword) {
-        List<String> result = elaborator.elaborate(keyword);
+    void elaborate(Optional<String> oExpected, String keyword) {
+        Optional<String> oResult = scholar.elaborate(keyword);
 
-        assertEquals(expected, result);
+        assertEquals(oExpected, oResult);
     }
+
 
 }

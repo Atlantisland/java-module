@@ -1,39 +1,43 @@
 package academy.everyonecodes.java.week9.set1.exercise1;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 
 public class AnimalMovementScholar {
     private List<Animal> animals = Animals.get();
 
-    public List<String> elaborate(String keyword) {
-            if (!getMovementKind(keyword).isEmpty()) {
-                return getMovementKind(keyword);
-            } else {
-            if (!getDistinctMovementsKind(keyword).isEmpty()) {
-                return getDistinctMovementsKind(keyword);
-            }
+    public Optional<String> elaborate(String keyword) {
+        Optional<String> oName = findByName(keyword);
+        if (oName.isPresent()) {
+            return oName;
         }
-        return new ArrayList<>();
+        return findByKind(keyword);
     }
 
-    private List<String> getMovementKind(String keyword) {
+    private Optional<String> findByName(String keyword) {
         return animals.stream()
                 .filter(animal -> animal.getName().equals(keyword))
-                .flatMap(animal -> animal.getMovement().stream())
-                .distinct()
-                .sorted()
-                .collect(Collectors.toList());
+                .map(Animal::getMovement)
+                .findFirst();
     }
 
-    private List<String> getDistinctMovementsKind(String keyword) {
-        return animals.stream()
+    private Optional<String> findByKind(String keyword) {
+        String movements = animals.stream()
                 .filter(animal -> animal.getKind().equals(keyword))
-                .flatMap(animal -> animal.getMovement().stream())
+                .map(Animal::getMovement)
+                .collect(joining(","));
+        if (movements.isEmpty()) {
+            return Optional.empty();
+        }
+        String distinctMovements = Stream.of(movements.split(","))
                 .distinct()
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(joining(","));
+        return Optional.of(distinctMovements);
     }
+
 
 }

@@ -7,27 +7,30 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class KnifeTest {
-    Knife knife = new Knife();
+    Cutlery cutlery = new Knife();
 
     @Test
     void getName() {
-        String result = knife.getName();
+        String result = cutlery.getName();
 
-        String expected = "knife";
+        String expected = "Knife";
         assertEquals(expected, result);
     }
 
     @ParameterizedTest
     @CsvSource({
+            "false, ''",
+            "false, soup",
+            "false, fish",
+            "false, pizza",
             "true, Fish",
             "true, Pizza",
-            "false,Soup",
-
     })
-    void isUsedFor(boolean expected, String input) {
-        boolean result = knife.isUsedFor(input);
+    void isUsedFor(boolean expected, String food) {
+        boolean result = cutlery.isUsedFor(food);
 
         assertEquals(expected, result);
     }
+
 
 }

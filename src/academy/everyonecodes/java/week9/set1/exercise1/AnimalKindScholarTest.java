@@ -4,28 +4,32 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AnimalKindScholarTest {
-    AnimalKindScholar elaborator = new AnimalKindScholar();
+    AnimalKindScholar scholar = new AnimalKindScholar();
 
     static Stream<Arguments> parameters() {
         return Stream.of(
-                Arguments.of("mammal", "dog"),
-                Arguments.of("bird", "sparrow"),
-                Arguments.of("snake, turtle", "reptile"),
-                Arguments.of("", "crocodile")
+                Arguments.of(Optional.empty(), ""),
+                Arguments.of(Optional.empty(), "Dog"),
+                Arguments.of(Optional.empty(), "Mammal"),
+                Arguments.of(Optional.of("mammal"), "dog"),
+                Arguments.of(Optional.of("dog,gorilla"), "mammal"),
+                Arguments.of(Optional.of("angelfish,salmon"), "fish")
+
         );
     }
 
     @ParameterizedTest
     @MethodSource("parameters")
-    void elaborate(String expected, String keyword) {
-        String result = elaborator.elaborate(keyword);
+    void elaborate(Optional<String> oExpected, String keyword) {
+        Optional<String> oResult = scholar.elaborate(keyword);
 
-        assertEquals(expected, result);
+        assertEquals(oExpected, oResult);
     }
 
 }

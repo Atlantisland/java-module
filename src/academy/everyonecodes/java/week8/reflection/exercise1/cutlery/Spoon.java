@@ -1,6 +1,10 @@
 package academy.everyonecodes.java.week8.reflection.exercise1.cutlery;
 
+import java.util.List;
+
 public class Spoon implements Cutlery {
+
+    private List<String> foods = List.of("Soup");
 
     @Override
     public String getName() {
@@ -9,10 +13,6 @@ public class Spoon implements Cutlery {
 
     @Override
     public boolean isUsedFor(String dishName) {
-        if (dishName.equals("Soup")) {
-            return true;
-        } else {
-            return false;
-        }
+        return foods.contains(dishName);
     }
 }

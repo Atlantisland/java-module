@@ -1,4 +1,10 @@
 package academy.everyonecodes.java.week9.Examples1.Exercise2;
 
-public class RandomSaladProvider {
+import java.util.List;
+
+public class RandomSaladProvider extends RandomFoodProvider {
+
+    public RandomSaladProvider() {
+        super(List.of("Caesar", "Tuscan", "Sicilian"));
+    }
 }

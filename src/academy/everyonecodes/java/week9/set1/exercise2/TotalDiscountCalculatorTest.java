@@ -14,20 +14,30 @@ class TotalDiscountCalculatorTest {
     TotalDiscountCalculator calculator = new TotalDiscountCalculator();
 
     static Stream<Arguments> parameters() {
-        Product wine = new Product("wine", 10.0);
-        Product tomato = new Product("tomato", 2.5);
-        Product chocolate = new Product("chocolate", 4.0);
-        List<Product> products = List.of(wine, tomato, chocolate);
-
         return Stream.of(
-                Arguments.of(15.47, List.of(wine, tomato, chocolate))
+                Arguments.of(0, List.of()),
+                Arguments.of(100, List.of(createProduct("item1"))),
+                Arguments.of(95, List.of(createProduct("wine"))),
+                Arguments.of(90, List.of(createProduct("tomato"))),
+                Arguments.of(93, List.of(createProduct("chocolate"))),
+                Arguments.of(278,
+                        List.of(createProduct("wine"),createProduct("tomato"),createProduct("chocolate"))),
+                Arguments.of(378,
+                        List.of(createProduct("wine"),createProduct("tomato"),createProduct("chocolate"),
+                                createProduct("item1")))
         );
+    }
+
+    static Product createProduct(String name) {
+        return new Product(name, 100);
     }
 
     @ParameterizedTest
     @MethodSource("parameters")
     void calculate(double expected, List<Product> products) {
         double result = calculator.calculate(products);
+
         assertEquals(expected, result);
     }
+
 }

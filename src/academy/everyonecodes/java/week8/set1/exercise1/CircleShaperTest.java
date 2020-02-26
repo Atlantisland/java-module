@@ -1,28 +1,21 @@
 package academy.everyonecodes.java.week8.set1.exercise1;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CircleShaperTest {
 
     @Test
-
-    void getShapeWithCircle(){
+    void getShape() {
         CircleShaper circleShaper = new CircleShaper();
-        String resultOne = circleShaper.getShape();
-        String expectedOne = "Circle";
-        Assertions.assertEquals(expectedOne, resultOne);
+        String expected = "Circle";
+        assertEquals(expected, circleShaper.getShape());
 
-        Shaper shaper = new CircleShaper();
-        String resultTwo = shaper.getShape();
-        String expectedTwo = "Circle";
-        Assertions.assertEquals(expectedTwo, resultTwo);
+        Shaper shaper = circleShaper;
+        assertEquals(expected, circleShaper.getShape());
 
-        Shaper anotherShaper = new CircleShaper();
-        String resultThree = anotherShaper.getShape();
-        String expectedThree = "Circle";
-        Assertions.assertEquals(expectedThree, resultThree);
-
+        Shaper otherShaper = new CircleShaper();
+        assertEquals(expected, circleShaper.getShape());
     }
-
 }

@@ -2,12 +2,13 @@ package academy.everyonecodes.java.week9.reflection.exercise1;
 
 public class ElectricCar extends Car {
 
-    public ElectricCar(String brand) {
-        super(brand, "Electric");
+    protected ElectricCar(String brand) {
+        super(brand);
     }
 
     @Override
-    public String refuel() {
+    String refuel() {
         return "I am recharging my electric car";
     }
+
 }

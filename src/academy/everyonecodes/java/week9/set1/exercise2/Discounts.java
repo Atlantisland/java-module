@@ -4,11 +4,12 @@ import java.util.List;
 
 public class Discounts {
 
+    private static List<Discount> discounts = List.of(
+            new FiveOnWine(), new TenOnVeggies(), new SevenOnSweets()
+    );
+
     public static List<Discount> get() {
-        return List.of(
-                new FiveOnWine(),
-                new TenOnVeggies(),
-                new SevenOnSweets()
-        );
+        return discounts;
     }
+
 }

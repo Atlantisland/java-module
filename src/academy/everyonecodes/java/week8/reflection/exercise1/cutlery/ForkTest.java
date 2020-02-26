@@ -7,27 +7,32 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ForkTest {
-    Fork fork = new Fork();
+    Cutlery cutlery = new Fork();
 
     @Test
     void getName() {
-        String result = fork.getName();
+        String result = cutlery.getName();
 
-        String expected = "fork";
+        String expected = "Fork";
         assertEquals(expected, result);
     }
 
     @ParameterizedTest
     @CsvSource({
+            "false, ''",
+            "false, soup",
+            "false, fish",
+            "false, pizza",
+            "false, pasta",
             "true, Fish",
             "true, Pizza",
-            "false,Soup",
-
+            "true, Pasta",
     })
-    void isUsedFor(boolean expected, String input) {
-        boolean result = fork.isUsedFor(input);
+    void isUsedFor(boolean expected, String food) {
+        boolean result = cutlery.isUsedFor(food);
 
         assertEquals(expected, result);
     }
+
 
 }

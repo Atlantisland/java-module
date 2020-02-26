@@ -7,19 +7,22 @@ public class TotalDiscountCalculator {
     private List<Discount> discounts = Discounts.get();
 
     public double calculate(List<Product> products) {
-        return calculateTotal(products) - calculateTotalDiscount(products);
-    }
-
-    private double calculateTotalDiscount(List<Product> products) {
-        return discounts.stream()
-                .map(discount -> discount.apply(products))
-                .reduce(0.0, Double::sum);
+        double total = calculateTotal(products);
+        double discount = calculateDiscount(products);
+        return total - discount;
     }
 
     private double calculateTotal(List<Product> products) {
         return products.stream()
-                .map(Product::getPrice)
-                .reduce(0.0, Double::sum);
+                .mapToDouble(Product::getPrice)
+                .sum();
     }
+
+    private double calculateDiscount(List<Product> products) {
+        return discounts.stream()
+                .mapToDouble(discount -> discount.apply(products))
+                .sum();
+    }
+
 }
 

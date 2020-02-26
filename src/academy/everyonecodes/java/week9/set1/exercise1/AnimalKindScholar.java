@@ -2,38 +2,40 @@ package academy.everyonecodes.java.week9.set1.exercise1;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
+import static java.util.stream.Collectors.joining;
 
 public class AnimalKindScholar {
     private List<Animal> animals = Animals.get();
 
-    public String elaborate(String keyword) {
-
-        if (!getAnimalName(keyword).isBlank()) {
-            return getAnimalName(keyword);
-        } else {
-            if (!getKind(keyword).isBlank()) {
-                return getKind(keyword);
-            }
+    public Optional<String> elaborate(String keyword) {
+        Optional<String> oName = findByName(keyword);
+        if (oName.isPresent()) {
+            return oName;
         }
-        return "";
+        return findByKind(keyword);
     }
 
-    private String getAnimalName(String keyword) {
-        return animals.stream()
-                .filter(animal -> animal.getKind().equals(keyword))
-                .map(Animal::getName)
-                .sorted()
-                .collect(Collectors.joining(", "));
-    }
-
-    private String getKind(String keyword) {
+    private Optional<String> findByName(String keyword) {
         return animals.stream()
                 .filter(animal -> animal.getName().equals(keyword))
                 .map(Animal::getKind)
-                .distinct()
-                .collect(Collectors.joining(""));
+                .findFirst();
     }
+
+    private Optional<String> findByKind(String keyword) {
+        String names = animals.stream()
+                .filter(animal -> animal.getKind().equals(keyword))
+                .map(Animal::getName)
+                .sorted()
+                .collect(joining(","));
+        if (names.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(names);
+    }
+
 }
 
 

@@ -3,20 +3,21 @@ package academy.everyonecodes.java.week8.set2.exercise1;
 import java.util.Objects;
 
 public class Safe {
-    private int difficultyPoints;
-    private int securityLevel;
 
-    public Safe(int difficultyPoints, int securityLevel) {
-        this.difficultyPoints = difficultyPoints;
+    private String securityLevel;
+    private int difficultyPoints;
+
+    public Safe(String securityLevel, int difficultyPoints) {
         this.securityLevel = securityLevel;
+        this.difficultyPoints = difficultyPoints;
+    }
+
+    public String getSecurityLevel() {
+        return securityLevel;
     }
 
     public int getDifficultyPoints() {
         return difficultyPoints;
-    }
-
-    public int getSecurityLevel() {
-        return securityLevel;
     }
 
     public void setDifficultyPoints(int difficultyPoints) {
@@ -28,12 +29,13 @@ public class Safe {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Safe safe = (Safe) o;
-        return Objects.equals(difficultyPoints, safe.difficultyPoints) &&
+        return difficultyPoints == safe.difficultyPoints &&
                 Objects.equals(securityLevel, safe.securityLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(difficultyPoints, securityLevel);
+        return Objects.hash(securityLevel, difficultyPoints);
     }
 }
+

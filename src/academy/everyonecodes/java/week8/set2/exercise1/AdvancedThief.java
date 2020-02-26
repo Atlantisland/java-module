@@ -5,8 +5,9 @@ public class AdvancedThief implements Thief {
 
     @Override
     public void open(Safe safe) {
-        int currentDifficultyPoints = safe.getDifficultyPoints();
-        safe.setDifficultyPoints(currentDifficultyPoints - skillLevel);
+        int difficultyPoints = safe.getDifficultyPoints();
+        int pointsAfterAttempt = difficultyPoints - skillLevel;
+        safe.setDifficultyPoints(pointsAfterAttempt);
     }
 
 }
