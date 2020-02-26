@@ -9,10 +9,12 @@ public enum Socks {
 
 
     Socks(String description) {
+
         this.description = description;
     }
 
     public String getDescription() {
+
         return this.description;
     }
 }
