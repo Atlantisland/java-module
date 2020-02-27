@@ -1,4 +1,4 @@
-package academy.everyonecodes.java.evaluation2.optionals.Enums;
+/*package academy.everyonecodes.java.evaluation2.optionals.Enums;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,3 +23,5 @@ public class MostExpensiveDishesFinder {
         }
         return result;
     }
+
+ */
